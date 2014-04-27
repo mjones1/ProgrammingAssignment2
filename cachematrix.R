@@ -4,15 +4,23 @@
 ## the .set() function; also returns the inverse matrix if computed in
 ## cacheSolve() function
 
-makeCacheMatrix <- function(x = matrix()) {
+MakeCacheMatrix <- function(x = matrix()) {
         m <- NULL
+        # set matrix method, if not passed as arg set to NULL
         set <- function(y) {
                x <<- y
                m <<- NULL
         }
+
+        # return matrix by calling get
         get <- function() x
+
+        # return inverse which is set in cacheSolve
         getInverse <- function() m
+
+        # allows setting of inverse matrix via cacheSolve
         setInverse <- function(inverse) m <<- inverse
+
         list(set = set, get = get, getInverse = getInverse,
              setInverse = setInverse)
 
@@ -38,7 +46,11 @@ cacheSolve <- function(x, ...) {
         ## if inverse not cached then use solve() to compute inverse
         data<-x$get()
         m <- solve(data)
+
+        ## call setInverse method to set inverse
         x$setInverse(m)
+
+        # return inverse matrix
         m
 }
 
