@@ -4,7 +4,7 @@
 ## the .set() function; also returns the inverse matrix if computed in
 ## cacheSolve() function
 
-MakeCacheMatrix <- function(x = matrix()) {
+makeCacheMatrix <- function(x = matrix()) {
         m <- NULL
         # set matrix method, if not passed as arg set to NULL
         set <- function(y) {
